@@ -1,0 +1,27 @@
+﻿@*
+/* Assignment 1.sln
+ * Assignment 1 - Student App
+ *
+ * Revision History:
+ *      Francis Gerald Garlejo
+ *      2022.06.10: Created,
+ *      2022.07.10: Revised,
+ *      2022.09.10: Finalized
+ */
+*@
+
+@model Assignment1.Entities.Student
+
+@{
+    ViewData["Title"] = "Delete Student";
+}
+
+<h6>Confirm Deletion</h6>
+<h3>@Model.FirstName @Model.LastName (Age: @Model.Age)</h3>
+
+<form asp-controller="Student" asp-action="Delete" method="post" enctype="application/x-www-form-urlencoded">
+    <input type="hidden" asp-for="StudentId" />
+
+    <button type="submit" class="btn btn-primary">Delete</button>
+    <a asp-controller="Students" asp-action="List" class="btn btn-primary">Cancel</a>
+</form>

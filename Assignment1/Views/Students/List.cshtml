@@ -1,0 +1,56 @@
+﻿@*
+/* Assignment 1.sln
+ * Assignment 1 - Student App
+ *
+ * Revision History:
+ *      Francis Gerald Garlejo
+ *      2022.06.10: Created,
+ *      2022.07.10: Revised,
+ *      2022.09.10: Finalized
+ */
+*@
+
+@model List<Assignment1.Entities.Student>
+
+
+@{
+    ViewData["Title"] = "All Students";
+}
+
+<div>
+    <h2>Students</h2>
+</div>
+
+<a asp-controller="Students" asp-action="Create">Add new student</a>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Last Name</th>
+            <th>First Name</th>
+            <th>Age</th>
+            <th>GPA</th>
+            <th>GPA Scale</th>
+            <th>Program</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var student in Model)
+        {
+            <tr>
+                <td>@student.LastName</td>
+                <td>@student.FirstName</td>
+                <td>@student.Age</td>
+                <td>@student.GPA</td>
+                <td>@student.GpaScale</td>
+                <td>@student.StudyProgram?.Name</td>
+                <td>
+                    <a asp-controller="Student" asp-action="Edit" asp-route-id="@student.StudentId">Edit</a>
+                    <span class="mx-1">|</span>
+                    <a asp-controller="Student" asp-action="Delete" asp-route-id="@student.StudentId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
